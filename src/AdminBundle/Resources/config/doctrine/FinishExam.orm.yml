@@ -1,0 +1,49 @@
+AdminBundle\Entity\FinishExam:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\FinishExamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+                
+    fields:
+        score:
+            type: string
+            length: 255
+            nulleable: true
+            
+    manyToOne:
+        exam:
+            targetEntity: Exam
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                exam:
+                    referencedColumnName: id
+            orphanRemoval: false
+        user:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                user:
+                    referencedColumnName: id
+            orphanRemoval: false    
+        course:
+            targetEntity: Course
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                course:
+                    referencedColumnName: id
+            orphanRemoval: false    
+    lifecycleCallbacks: {  }

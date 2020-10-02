@@ -1,0 +1,26 @@
+AdminBundle\Entity\Course:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\CourseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            
+        image:
+            type: string
+            length: 255    
+            
+    manyToOne:
+        categoryCourse:
+            targetEntity: CategoryCourse
+            joinColumn:
+                    name: categoryCourse_id
+                    referencedColumnName: id        
+    lifecycleCallbacks: {  }

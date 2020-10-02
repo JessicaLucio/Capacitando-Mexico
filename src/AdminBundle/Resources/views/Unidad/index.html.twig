@@ -1,0 +1,54 @@
+{% extends "WebBundle::layout.html.twig" %}
+
+{% block content %}
+
+    <div class='row'>
+        <div class='col-xs-12'>
+
+            <div class="wrapper-contenido">
+                <h1 class="subtitle">Unidades</h1>
+                <hr>
+                <a href="{{path('unidad_add')}}" class='btn btn-success m-xs-r-2'><i class='fa fa-plus m-xs-r-1'></i>Añadir Unidad</a>
+                <hr>
+                {% for message in app.session.flashBag().get('status') %}
+                    <div class="alert alert-success alert-dismissible alert-js" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class='col-xs-12'>
+            <div class='table-responsive'>
+                <table class="table table-striped table-bordered table-alpha" cellspacing="0" width="100%" id="myTable">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>Nombre</th>
+                            <th>Curso</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for unidad in unidades %}
+                            <tr>
+                                <td>{{ unidad.name }}</td>
+                                <td>{{ unidad.course }}</td>
+                                <td class="text-center ico-actions">
+                                    <a href="{{ path('unidad_edit', {'id':unidad.id}) }}" class="ico-pencil m-xs-r-1">
+                                        <span class="fa fa-pencil" aria-hidden="true"></span>
+                                    </a> 
+                                    <a href="{{ path('unidad_delete', {'id':unidad.id}) }}" class="ico-trash m-xs-r-1">
+                                        <span class="fa fa-trash" aria-hidden="true"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

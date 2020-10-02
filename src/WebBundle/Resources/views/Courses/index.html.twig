@@ -1,0 +1,43 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{asset('assets/js/custom/buttons-inscription.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+    {% include 'WebBundle:Courses:all-courses.html.twig' %}
+    <div class="row">
+        {# PAGINATOR #}
+        {#<div class="col-xs-12 text-center m-xs-tb-4">
+            <ul class="list-inline list-paginator">
+                <li>
+                    <a><</a>
+                </li>
+                <li>
+                    <a>1</a>
+                </li>
+                <li>
+                    <a>2</a>
+                </li>
+                <li>
+                    <a>3</a>
+                </li>
+                <li>
+                    <a>4</a>
+                </li>
+                <li>
+                    <a>5</a>
+                </li>
+                <li>
+                    <a>6</a>
+                </li>
+                <li>
+                    <a>></a>
+                </li>
+            </ul>
+        </div>
+#}        {# PAGINATOR #}
+    </div>
+{% endblock %}
+

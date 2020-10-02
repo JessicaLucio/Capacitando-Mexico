@@ -1,0 +1,23 @@
+web_about:
+    path:     /about
+    defaults: { _controller: WebBundle:Default:about }
+
+web_aliados:
+    path:     /aliados
+    defaults: { _controller: WebBundle:Default:aliados }
+
+web_contacto:
+    path:     /contacto
+    defaults: { _controller: WebBundle:Default:contacto }
+
+web_social:
+    path:     /social
+    defaults: { _controller: WebBundle:Default:social }
+    
+web_politica:
+    path:     /politica
+    defaults: { _controller: WebBundle:Default:politica }
+
+web_terminos:
+    path:     /terminos
+    defaults: { _controller: WebBundle:Default:terminos }

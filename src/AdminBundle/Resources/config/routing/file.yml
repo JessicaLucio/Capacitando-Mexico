@@ -1,0 +1,26 @@
+files_index:
+    path: /file
+    defaults: { _controller: AdminBundle:File:index}
+    
+file_add:
+    path: /file-add
+    defaults: { _controller: AdminBundle:File:add}
+    
+file_edit:
+    path: /file-edit/{id}
+    defaults: { _controller: AdminBundle:File:edit, id:null }
+    
+file_delete:
+    path: /file-delete/{id}
+    defaults: { _controller: AdminBundle:File:delete, id:null }    
+    
+dynamic_unidades:
+    path: /dynamic-unidades
+    defaults: { _controller: AdminBundle:File:unidad}
+    
+dynamic_topics:
+    path: /dynamic-topics
+    defaults: { _controller: AdminBundle:File:topic} 
+ 
+    
+

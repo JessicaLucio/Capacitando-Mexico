@@ -1,0 +1,48 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class='col-xs-12 text-center'>
+            <h2>Editar Tema</h2>
+            <hr />
+            {% for message in app.session.flashBag().get('status') %}
+                <div class='alert alert-danger alert-dismissable'>
+                    {{ message }} 
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class='col-xs-12 col-md-6 col-md-offset-3'>
+            <form method='post' enctype='multipart/form-data'>
+                {% if course %}
+                    <div class='form-group'>
+                        <label class='control-label'>Nombre:</label>
+                        <input type="text" name="name" class="form-control" value="{{course.name}}" required/>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Categoria:</label>
+                        <select class='form-control' name='categoria' id='categoria'>
+                            <option value="{{course.categoryCourse.id}}"  selected="selected">{{ course.categoryCourse }}</option>
+                            {% for category in categories %}
+                                <option value='{{category.id}}'>{{category.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Imagen:</label>
+                        <input type="file" class="form-control" name="image" value="{{course.image}}" required/>
+                        {% if course.image %}
+                            <a href="{{ asset("uploads/"~course.name~"/"~course.image)}}">Ver archivo</a>
+                        {% endif %}
+                    </div>
+                    <div class='form-group'>
+                        <button type='submit' name='acta' value='Subir acta de entrega' class='btn btn-success'>
+                            Editar
+                        </button>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

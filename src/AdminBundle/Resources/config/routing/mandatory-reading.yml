@@ -1,0 +1,15 @@
+mandatory_reading_index:
+    path: /index-mandatory-reading
+    defaults: { _controller: AdminBundle:MandatoryReading:index}  
+    
+mandatory_reading_add:
+    path: /add-mandatory-reading
+    defaults: { _controller: AdminBundle:MandatoryReading:add}  
+
+mandatory_reading_edit:
+    path: /edit-mandatory-reading/{id}
+    defaults: { _controller: AdminBundle:MandatoryReading:edit, id:null}      
+
+mandatory_reading_delete:
+    path: /delete-mandatory-reading/{id}
+    defaults: { _controller: AdminBundle:MandatoryReading:delete, id:null}      

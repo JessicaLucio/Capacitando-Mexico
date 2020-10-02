@@ -1,0 +1,15 @@
+info_course_index:
+    path: /info-course/index
+    defaults: { _controller: AdminBundle:InfoCourse:index}  
+    
+info_course_add:
+    path: /info-course/add
+    defaults: { _controller: AdminBundle:InfoCourse:add}  
+
+info_course_edit:
+    path: /info-course/edit/{id}
+    defaults: { _controller: AdminBundle:InfoCourse:edit, id:null}      
+
+info_course_delete:
+    path: /info-course/delete/{id}
+    defaults: { _controller: AdminBundle:InfoCourse:delete, id:null}      

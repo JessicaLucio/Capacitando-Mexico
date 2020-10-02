@@ -1,0 +1,11 @@
+web_courses_index:
+    path:     /courses-index
+    defaults: { _controller: WebBundle:Course:index }
+    
+web_mycourses:
+    path:     /my-courses
+    defaults: { _controller: WebBundle:Course:myCourses }    
+    
+web_courses_detail:
+    path:     /course-detail/{id}
+    defaults: { _controller: WebBundle:Course:detail, id:null }    

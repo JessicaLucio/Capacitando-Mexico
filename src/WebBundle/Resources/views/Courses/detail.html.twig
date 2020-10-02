@@ -1,0 +1,146 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        // Create the chart
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column',
+                spacingLeft: 10
+            },
+            title: {
+                text: 'Tu evaluación'
+            },
+            xAxis: {
+                type: 'category'
+            },
+            yAxis: {
+                title: {
+                    text: 'Calificación'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            plotOptions: {
+                series: {
+                    pointWidth: 40,
+                    borderWidth: 0,
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>'
+            },
+            responsive: {
+                rules: [{
+                        condition: {
+                            maxWidth: 300
+                        },
+                        chartOptions: {
+                            legend: {
+                                enabled: false
+                            }
+                        }
+                    }]
+            },
+            series: [{        {% if finish_exams %}
+            {% for data in finish_exams %} 
+                            name: '{{data.exam.name}}',
+            {% endfor %}                
+        {% endif %}                    
+        {% if finish_exams %}
+                        colors: [
+            {% for data in finish_exams %} 
+                {% if app.user.id == data.user.id and course.id == data.exam.unidad.course.id %}
+                    {% if data.score >= 8%}
+                                        '#02D379',
+                    {% else %}
+                                        '#F95C41',
+                    {% endif%}
+                {% endif %}
+            {% endfor %}
+                            ],
+        {% endif %}
+                        colorByPoint: true,
+        {% if finish_exams %}
+                        data: [
+            {% for data in finish_exams %}  
+                {% if app.user.id == data.user.id and course.id == data.exam.unidad.course.id %}
+                                    {
+                                        name: '{{data.exam.name}}',
+                                        y:{{ data.score}}
+                                    },
+                {% endif %}
+            {% endfor %}
+                            ]
+        {% endif %}
+                    }]
+            });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div class='row menu-detail-course-wrap'>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-xs-12'>
+                    <ul class="list-inline menu-detail-course">
+                        <li title="contenido" class="btn-detail"><a>Contenido</a></li>
+                        <li title="informacion" class="btn-detail">
+                            <a>Informacion del curso</a>
+                        </li>
+                        {#<li title="discusion" class="btn-detail"><a>Discusión</a></li>#}
+                        <li title="progreso" class="btn-detail">
+                            <a>Progreso</a>
+                        </li>
+                        <li title="preguntas" class="btn-detail"><a>Preguntas frecuentes</a></li>
+                        <li title="fuentes" class="btn-detail"><a>Fuentes de consulta</a></li>
+                        <li title="l-obligatoria" class="btn-detail"><a>Lectura obligatoria</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='container'>
+            <div class='row row-margin'>
+                <div class='col-xs-12'>
+                    {% for message in app.session.flashBag().get('status') %}
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{ message }}</strong>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row row-margin">
+                <div title="contenido" class="list-detail" id="contenido">
+                    {% include 'WebBundle:Courses:_contenido.html.twig' %}
+                </div>
+                <div title="informacion" class="list-detail">
+                    {% include 'WebBundle:Courses:_informacion.html.twig' %}
+                </div>
+                {#<div title="discusion" class="list-detail">
+                    {% include 'WebBundle:Courses:_discusion.html.twig' %}
+                </div>#}
+                <div title="progreso" class="list-detail">
+                    {% include 'WebBundle:Courses:_progreso.html.twig' %}
+                </div>
+                <div title="preguntas" class="list-detail">
+                    {% include 'WebBundle:Courses:_preguntas.html.twig' %}
+                </div>
+                <div title="fuentes" class="list-detail">
+                    {% include 'WebBundle:Courses:_fuentes.html.twig' %}
+                </div>
+                <div title="l-obligatoria" class="list-detail">
+                    {% include 'WebBundle:Courses:_l-obligatoria.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

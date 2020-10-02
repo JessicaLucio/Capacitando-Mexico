@@ -1,0 +1,75 @@
+{% extends "WebBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/custom/files.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class='row'>
+        <div class='col-xs-12 text-center'>
+            <h2>Editar Archivo</h2>
+            <hr/>
+            {% for message in app.session.flashBag().get('status') %}
+                <div class='alert alert-danger alert-dismissable'>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class='col-md-6 col-md-offset-3 col-xs-12 form-admin'>
+            <form method="post" id="form-general" enctype='multipart/form-data'>
+                {% if file %}
+                    <div class='form-group'>
+                        <label class='control-label'>Nombre del Archivo</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{ file.name }}"/>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Selecciona un Curso</label>
+                        <select class='form-control' name="cursos" id="cursos">
+                            <option value="{{ file.course.id }}" selected="selected">{{ file.course }}</option>
+                            {% for course in courses %}
+                                <option value="{{ course.id }}">{{ course.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Selecciona una Unidad</label>
+                        <select class='form-control' name="unidades" id='unidades'>
+                            <option value="{{ file.unidad.id }}" selected="selected">{{ file.unidad }}</option>
+                            <option disabled>-Escoge una opcion-</option>
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Selecciona un Tema</label>
+                        <select class='form-control' name="temas" id='temas'>
+                            <option value="{{ file.topic.id }}" selected="selected">{{ file.topic }}</option>
+                            <option disabled>-Escoge una opcion-</option>
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label'>Sube un Archivo</label>
+                        <input type="file" class="form-control" name="file" value="{{ file.file }}" required/>
+                        {% if file.file %}
+                            <a href="{{ asset("uploads/files/"~file.course.id~"/"~file.unidad.id~"/"~file.topic.id~"/"~file.file) }}"
+                               target='_blank'>Ver archivo</a>
+                        {% endif %}
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="logotipo" {{ file.logotipo == 1 ? 'checked' : '' }}> Logotipo
+                        </label>
+                    </div>
+                    <div class='form-group text-center {#file-disabled#}' id="btn-action-wrap">
+                        <input type="submit" class="btn btn-blue-light" value="Guardar"/>
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+        <div class="pull-right user">
+            <a class="btn-underline" href="{{ path('files_index') }}"><i class='fa fa-arrow-left m-xs-r-1'></i>Volver al
+                listado</a>
+        </div>
+    </div>
+
+{% endblock %}

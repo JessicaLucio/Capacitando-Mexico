@@ -1,0 +1,50 @@
+AdminBundle\Entity\FileExam:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\FileExamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        file:
+            type: string
+            length: 255
+            
+    manyToOne:
+        course:
+            targetEntity: Course
+            joinColumn:
+                    name: course_id
+                    referencedColumnName: id
+                    
+        unidad:
+            targetEntity: Unidad
+            joinColumn:
+                    name: unidad_id
+                    referencedColumnName: id
+                    
+        remitente:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                remitente:
+                    referencedColumnName: id
+            orphanRemoval: false    
+         
+        destinatario:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                destinatario:
+                    referencedColumnName: id
+            orphanRemoval: false        
+    lifecycleCallbacks: {  }

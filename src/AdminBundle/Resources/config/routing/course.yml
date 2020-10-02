@@ -1,0 +1,15 @@
+course_index:
+    path: /index-course
+    defaults: { _controller: AdminBundle:Course:index}  
+    
+course_add:
+    path: /add-course
+    defaults: { _controller: AdminBundle:Course:add}  
+
+course_edit:
+    path: /edit-course/{id}
+    defaults: { _controller: AdminBundle:Course:edit, id:null}      
+
+course_delete:
+    path: /delete-course/{id}
+    defaults: { _controller: AdminBundle:Course:delete, id:null}      

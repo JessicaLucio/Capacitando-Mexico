@@ -1,0 +1,54 @@
+<div class='row'>
+    <div class='col-xs-12 m-xs-tb-4'>
+        <h1 class='title-alpha'>TODOS LOS CURSOS</h1>
+    </div>
+</div>
+<div class='row'>
+    {% for course in courses %}
+        <div class='col-xs-12 col-md-4 m-xs-b-2'>
+            <div class='border-line info-course'>
+{#                <a href="{{path('web_courses_detail', {'id' : course.id } )}}">#}
+{#                    <div class='hover-wrap'>#}
+                        <div class='image-wrap'>
+                            {% if course.image != null%}
+                                <img class='responsive-image' src="{{ asset("uploads/"~course.name~"/"~course.image)}}"/>
+                            {% else %}
+                                <img src="{{ asset('assets/images/courses/curso.jpg') }}" class='responsive-image' />
+                            {% endif %}
+                        </div>
+                        {#<div class='overlay-wrap'>
+                            <h2 class='vertical-align'>
+                               <i class='glyphicon glyphicon-plus'></i>
+                            </h2>
+                        </div>#}
+{#                    </div>#}
+{#                </a>#}
+                <div class='col-xs-12 padding-wrap'>
+                    <h1 class='m-xs-b-2 text-blue'>{{ course.name }}</h1>
+                    {#<p class="text-gray-dark" style="margin-bottom: 2rem;">SCHP-UNAM- DPbR4x</p>#}
+                    <a href="{{ path('web_mycourses') }}" class="btn btn-sm btn-success btn-inscription
+                       {% if app.user|inscription(course) == true %}
+                           hidden
+                       {% endif %}
+                       "
+                       data-course="{{ course.id }}">
+                        <span class="glyphicon glyphicon-ok-circle" aria-hidden='true'></span>
+                        Inscribirte
+                    </a>
+                    <a class="btn btn-sm btn-default
+                       {% if app.user|inscription(course) == false %}
+                           hidden
+                       {% endif %}
+                       "
+                       data-course="{{ course.id }}">
+                        <span class="glyphicon glyphicon-ok-circle" aria-hidden='true'></span>
+                        Estas inscrito a este curso
+                    </a>
+                </div>
+                <div class="col-xs-12 footer-course-all padding-wrap bg-blue">
+                    {#<p>Empieza: 30 Abril 2017.</p>#}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

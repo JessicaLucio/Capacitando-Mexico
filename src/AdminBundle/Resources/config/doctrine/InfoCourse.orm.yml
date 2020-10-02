@@ -1,0 +1,23 @@
+AdminBundle\Entity\InfoCourse:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\InfoCourseRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        body:
+            type: string
+            length: 2050
+            
+    manyToOne:
+        course:
+            targetEntity: Course
+            joinColumn:
+                    name: course_id
+                    referencedColumnName: id        
+            
+    lifecycleCallbacks: {  }

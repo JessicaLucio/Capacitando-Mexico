@@ -1,0 +1,32 @@
+{% if app.request.attributes.get('_route') %}
+{#!= 'admin_login' #}
+
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row bg-blue-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <ul class="list-inline list-footer m-xs-tb-3">
+                                <li><a href="{{path('web_about')}}">Acerca de</a></li>
+                                <li><a href="{{path('web_aliados')}}">Aliados</a></li>
+                                <li><a href="{{path('web_contacto')}}">Contacto</a></li>
+                                <li><a href="{{path('web_social')}}">Servicio Social</a></li>
+                            </ul>
+                            <ul class="list-inline list-conditions m-xs-b-3">
+                                <li><a href="{{path('web_politica')}}" class="text-orange">Política de Privacidad</a></li>
+                                <li class="text-orange">|</li>
+                                <li><a href="{{path('web_terminos')}}" class="text-orange">Términos de Servicio</a></li>
+                            </ul>
+                            <p class="footpar">Evento realizado con el apoyo de la SECRETARIA a través del Programa Integral del Desarrollo Rural 2016.</p>
+                            <p class="text-gray">Este programa es público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los establecidos en el programa.</p>
+                            
+                            <p class="text-gray">Centro de Investigación y Desarrollo Costero, Todos los Derechos Reservados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endif %}

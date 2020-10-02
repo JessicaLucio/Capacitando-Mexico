@@ -1,0 +1,51 @@
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <title>
+            {% block title %} Capacitando México {% endblock %}
+        </title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/css/dataTables.bootstrap.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/datepicker/css/bootstrap-datepicker.min.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/css/zetter.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/bxslider/jquery.bxslider.css')}}"/>
+            <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}"/>
+             <link rel="stylesheet" href="{{asset('assets/css/mediaqueries.css')}}"/>
+        {% endblock %}
+    </head>
+    <body>
+        {% include 'WebBundle:Default:header.html.twig' %}
+
+        <section class='main-wrap'>
+            <div class='{{app.request.attributes.get('_route') == 'admin_login' or app.request.attributes.get('_route') == 'web_courses_detail' or app.request.attributes.get('_route') == 'web_index'  ? 'container-fluid' : 'container' }}'>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </section>
+
+        {% include 'WebBundle:Default:footer.html.twig' %}
+
+        {% block javascripts %}
+            <script type="text/javascript">
+                var URL = "{{ app.request.getSchemeAndHttpHost() }}/app_dev.php";
+            </script>
+            <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+            <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+            <script src="{{asset('assets/highcharts/highcharts.js')}}"></script>
+            <script src="{{asset('assets/highcharts/modules/exporting.js')}}"></script>
+            <script src="{{asset('assets/js/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('assets/js/dataTables.bootstrap.min.js')}}"></script>
+            <script src="{{asset('assets/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+            <script src="{{asset('assets/datepicker/locales/bootstrap-datepicker.es.min.js')}}"></script>
+            <script src="{{asset('assets/bxslider/jquery.bxslider.js')}}"></script>
+            <script src="{{asset('assets/js/custom/finish-exam.js')}}"></script>
+            <script src="{{asset('assets/js/custom/main.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>
+

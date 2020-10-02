@@ -1,0 +1,46 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    inscription.twig_extension:
+        class: AdminBundle\Twig\InscriptionExtension
+        public: false
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+            
+    finish.twig_extension:
+        class: AdminBundle\Twig\FinishExamExtension
+        public: false
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension } 
+            
+    upload.twig_extension:
+        class: AdminBundle\Twig\UploadExamExtension
+        public: false
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }
+            
+    average.twig_extension:
+        class: AdminBundle\Twig\AverageAdminExtension
+        public: false
+        arguments:
+            doctrine: "@doctrine"
+        tags:
+            - { name: twig.extension }        
+            
+    app.notification_service:
+        class: AdminBundle\Services\NotificationService
+        arguments: ["@doctrine.orm.entity_manager"]        
+                    

@@ -1,0 +1,23 @@
+AdminBundle\Entity\Notification:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\NotificationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        remitente:
+            type: string
+            length: 255
+        destinatario:
+            type: string
+            length: 255
+        created:
+            type: datetime
+        readed:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

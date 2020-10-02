@@ -1,0 +1,40 @@
+web_info_footer:
+    resource: "@WebBundle/Resources/config/routing/infoFooter.yml"
+    prefix: /
+
+web_course:
+    resource: "@WebBundle/Resources/config/routing/course.yml"
+    prefix: /       
+    
+web_inscription:
+    resource: "@WebBundle/Resources/config/routing/inscription.yml"
+    prefix: /      
+    
+web_finish_exam:
+    resource: "@WebBundle/Resources/config/routing/finish-exam.yml"
+    prefix: /  
+    
+web_detail_file_exam:
+    resource: "@WebBundle/Resources/config/routing/detail-file-exam.yml"
+    prefix: /
+
+web_detail_score_file_exam:
+    resource: "@WebBundle/Resources/config/routing/detail-score-file-exam.yml"
+    prefix: /
+
+web_check_inscription:
+    path:     /check-inscription
+    defaults: { _controller: WebBundle:Default:checkInscription }       
+
+web_profile:
+    path:     /profile
+    defaults: { _controller: AdminBundle:User:profile }  
+    
+web_index:
+    path:     /
+    defaults: { _controller: WebBundle:Default:index }
+
+web_json:
+    path:     /json
+    defaults: { _controller: WebBundle:Default:json }
+    methods: [POST]

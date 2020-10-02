@@ -1,0 +1,15 @@
+question_index:
+    path: /index-question
+    defaults: { _controller: AdminBundle:Question:index}  
+    
+question_add:
+    path: /add-question
+    defaults: { _controller: AdminBundle:Question:add}  
+
+question_edit:
+    path: /edit-question/{id}
+    defaults: { _controller: AdminBundle:Question:edit, id:null}      
+
+question_delete:
+    path: /delete-question/{id}
+    defaults: { _controller: AdminBundle:Question:delete, id:null}      

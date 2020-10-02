@@ -1,0 +1,15 @@
+answer_index:
+    path: /index-answer
+    defaults: { _controller: AdminBundle:Answer:index}  
+    
+answer_add:
+    path: /add-answer
+    defaults: { _controller: AdminBundle:Answer:add}  
+
+answer_edit:
+    path: /edit-answer/{id}
+    defaults: { _controller: AdminBundle:Answer:edit, id:null}      
+
+answer_delete:
+    path: /delete-answer/{id}
+    defaults: { _controller: AdminBundle:Answer:delete, id:null}      

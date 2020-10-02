@@ -1,0 +1,45 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            {% for message in app.session.flashBag().get('status') %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>        
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="row">
+                <div class='image-wrap body-image'>
+                    <img src="{{ asset('assets/images/default/login.jpg') }}" class='responsive-image' />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-2 form-login">            
+            {% if error %}
+                <div class="alert alert-danger"> Credenciales no validas </div>
+            {% endif %}
+
+            <form action="{{ path('login_check') }}" method="POST" class="">
+                <div class="form-group">
+                    <label class="text-gray-dark">Correo Electrónico</label>
+                    <input type="email" id="username" name="_username" value="{{ lastUsername }}" class="form-control" required />
+                </div>
+                <div class="form-group">
+                    <label class="text-gray-dark">Contraseña</label>
+                    <input type="password" id="password" name="_password" class="form-control" required/>
+                </div>
+                <div class="form-group">
+                    <a href="{{path('forgot-password')}}" class="text-gray-dark"><u>¿Olvidaste la contraseña?</u></a>
+                </div>
+
+                <input type="submit" value="INICIAR SESIÓN"  class="btn btn-warning-alpha" />
+                <input type="hidden" name="_target_path" value="/check-inscription" />
+            </form>
+        </div>
+    </div>
+{% endblock %}

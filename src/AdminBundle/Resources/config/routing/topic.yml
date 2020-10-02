@@ -1,0 +1,15 @@
+topic_index:
+    path: /index-topic
+    defaults: { _controller: AdminBundle:Topic:index}  
+    
+topic_add:
+    path: /add-topic
+    defaults: { _controller: AdminBundle:Topic:add}  
+
+topic_edit:
+    path: /edit-topic/{id}
+    defaults: { _controller: AdminBundle:Topic:edit, id:null}      
+
+topic_delete:
+    path: /delete-topic/{id}
+    defaults: { _controller: AdminBundle:Topic:delete, id:null}      

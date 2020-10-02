@@ -1,0 +1,38 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block content %}
+    
+    {% include 'WebBundle:Slider:slider.html.twig' %}
+    
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-12 m-xs-tb-4'>
+                <h1 class='title-alpha'>TODOS LOS CURSOS</h1>
+            </div>
+        </div>
+        <div class='row'>
+            {% for course in courses %}
+                <div class='col-xs-12 col-md-4 m-xs-b-2'>
+                    <div class='border-line info-course'>
+                        <div class='image-wrap'>
+                            <a href="{{path('admin_login')}}">
+                                {% if course.image != null%}
+                                    <img class='responsive-image' src="{{ asset("uploads/"~course.name~"/"~course.image)}}"/>
+                                {% else %}
+                                    <img src="{{ asset('assets/images/courses/curso.jpg') }}" class='responsive-image' />
+                                {% endif %}
+                            </a>
+                        </div>
+                        <div class='padding-wrap'>
+                            <h1 class='m-xs-b-2 text-blue'>{{ course.name }}</h1>
+                            {#<p class="text-gray-dark" style="margin-bottom: 2rem;">SCHP-UNAM- DPbR4x</p>#}
+                        </div>
+                        <div class="footer-course-all padding-wrap bg-blue">
+                            {#<p>Empieza: 01 Marzo 2017.</p>#}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

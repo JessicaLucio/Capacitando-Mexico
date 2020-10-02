@@ -1,0 +1,24 @@
+AdminBundle\Entity\AnswerAdmin:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\AnswerAdminRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        answer:
+            type: boolean
+            nullable: true
+        name:
+            type: string
+            length: 255
+    manyToOne:
+        question_admin:
+            targetEntity: QuestionAdmin
+            joinColumn:
+                    name: question_admin_id
+                    referencedColumnName: id        
+    lifecycleCallbacks: {  }

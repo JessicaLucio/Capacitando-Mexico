@@ -1,0 +1,8 @@
+detail_file_exam:
+    path: /detail-file-exam/{id}
+    defaults: {_controller: WebBundle:DetailFileExam:index}
+
+     
+          
+    
+    

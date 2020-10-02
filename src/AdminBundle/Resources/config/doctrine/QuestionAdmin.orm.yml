@@ -1,0 +1,25 @@
+AdminBundle\Entity\QuestionAdmin:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\QuestionAdminRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        numberquestion:
+            type: string
+            length: 255
+            
+    manyToOne:
+        exam:
+            targetEntity: Exam
+            joinColumn:
+                    name: exam_id
+                    referencedColumnName: id         
+    lifecycleCallbacks: {  }

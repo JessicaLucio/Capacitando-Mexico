@@ -1,0 +1,103 @@
+<header>
+    <div class='header-wrap container-fluid'>
+
+        {% if app.user == null %}
+            <a class='logo' href="{{path('admin_login')}}"></a>
+        {% elseif app.user != null %}
+            <a class='logo' href="{{path('web_courses_index')}}"></a>
+        {% endif %}
+
+        {% if app.user != null %}
+            <a href="{{path('web_courses_index')}}">EXPLORAR CURSOS</a>
+        {% endif %}
+        <div class='header-btn pull-right'>
+
+            {% if app.user == null and app.request.attributes.get('_route') == 'web_index' %}
+                <a href="{{ path('register') }}" class='btn btn-default btn-register'>REGISTRARSE</a>
+                <a href="{{ path('admin_login') }}" class='btn btn-warning-alpha'>INICIAR SESION</a> 
+            {% elseif app.user == null and app.request.attributes.get('_route') == 'register' %}
+                <a href="{{ path('admin_login') }}" class='btn btn-warning-alpha'>INICIAR SESION</a>     
+            {% elseif app.user == null and app.request.attributes.get('_route') == 'admin_login' %}
+                <a href="{{ path('register') }}" class='btn btn-default btn-register'>REGISTRARSE</a>   
+            {% endif %}
+
+            {% if app.user != null %}
+                <!-- Split button -->
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">
+                        <div class='avatar'>
+                            {% if app.user.image == null %}           
+                                <img src="{{ asset('assets/images/default.png') }}" />
+                            {% else %}
+                                <img src="{{ asset('uploads/users/user_'~app.user.id~'/'~app.user.image) }}" />
+                            {% endif %}
+                        </div>
+                        {{ app.user.name }} {{ app.user.surname }}
+                    </button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="min-height:34px;">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu menu-settings">
+                        {#<li><a href="#">Configuración de la Cuenta</a></li>#}
+                        {% if app.user.role == 'ROLE_ADMIN' %}
+                            <li>
+                                <a href="{{ path('course_index') }}">Cursos</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('unidad_index') }}">Unidades</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('topic_index') }}">Temas</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('exam_index') }}">Examenes</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('upload_exam_index') }}">Examenes Upload</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('question_index') }}">Preguntas</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('answer_index') }}">Respuestas</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('inscription_index') }}">Inscripciones de los Cursos</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('info_course_index') }}">Información de Curso</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('supplementary_reading_index') }}">Fuentes de Consulta</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('mandatory_reading_index') }}">Lecturas Obligatorias</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('files_index') }}">Imagenes Cursos</a>
+                            </li>
+                             <li role="separator" class="divider">
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path('web_mycourses') }}">Mis Cursos</a>
+                            </li>
+                            <li role="separator" class="divider">
+                            </li>
+                            <li>
+                                <a href="{{ path('web_profile') }}">Mi Perfil</a>
+                            </li>
+                            <li role="separator" class="divider">
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{{ path('logout') }}">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif%}
+        </div>
+    </div>
+</header>
+

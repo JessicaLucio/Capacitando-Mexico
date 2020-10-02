@@ -1,0 +1,8 @@
+finish_exam:
+    path: /finish-exam
+    defaults: {_controller: WebBundle:FinishExam:finishExam}
+    methods: [POST]
+     
+          
+    
+    

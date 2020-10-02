@@ -1,0 +1,31 @@
+AdminBundle\Entity\Topic:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\TopicRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        body:
+            type: string
+            length: 9050
+            
+    manyToOne:
+        course:
+            targetEntity: Course
+            joinColumn:
+                    name: course_id
+                    referencedColumnName: id
+                    
+        unidad:
+            targetEntity: Unidad
+            joinColumn:
+                    name: unidad_id
+                    referencedColumnName: id        
+    lifecycleCallbacks: {  }

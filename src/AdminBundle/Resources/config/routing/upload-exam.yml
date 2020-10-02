@@ -1,0 +1,15 @@
+upload_exam_index:
+    path: /index-upload-exam
+    defaults: { _controller: AdminBundle:UploadExam:index}  
+    
+upload_exam_add:
+    path: /add-upload-exam
+    defaults: { _controller: AdminBundle:UploadExam:add}  
+
+upload_exam_edit:
+    path: /edit-upload-exam/{id}
+    defaults: { _controller: AdminBundle:UploadExam:edit, id:null}      
+
+upload_exam_delete:
+    path: /delete-upload-exam/{id}
+    defaults: { _controller: AdminBundle:UploadExam:delete, id:null}      

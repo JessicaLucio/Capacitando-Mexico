@@ -1,0 +1,41 @@
+AdminBundle\Entity\File:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\FileRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        file:
+            type: string
+            length: 255
+        logotipo:
+            type: boolean
+            nullable: true
+            
+    manyToOne:
+        course:
+            targetEntity: Course
+            joinColumn:
+                    name: course_id
+                    referencedColumnName: id
+                    
+        unidad:
+            targetEntity: Unidad
+            joinColumn:
+                    name: unidad_id
+                    referencedColumnName: id
+                    
+        topic:
+            targetEntity: Topic
+            joinColumn:
+                    name: topic_id
+                    referencedColumnName: id            
+            
+    lifecycleCallbacks: {  }

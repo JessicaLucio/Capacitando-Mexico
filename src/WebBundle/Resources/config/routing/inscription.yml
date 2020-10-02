@@ -1,0 +1,12 @@
+inscription:
+    path: /inscription
+    defaults: {_controller: WebBundle:Inscription:inscription}
+    methods: [POST]
+    
+uninscription:
+    path: /uninscription
+    defaults: {_controller: WebBundle:Inscription:uninscription}
+    methods: [POST]    
+          
+    
+    

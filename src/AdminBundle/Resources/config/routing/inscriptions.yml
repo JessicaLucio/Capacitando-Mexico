@@ -1,0 +1,7 @@
+inscription_index:
+    path: /inscriptions
+    defaults: { _controller: AdminBundle:Inscription:index}
+
+inscription_delete:
+    path: /inscription-delete/{id}
+    defaults: { _controller: AdminBundle:Inscription:delete, id:null}

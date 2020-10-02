@@ -1,0 +1,15 @@
+supplementary_reading_index:
+    path: /index-supplementary-reading
+    defaults: { _controller: AdminBundle:SupplementaryReading:index}  
+    
+supplementary_reading_add:
+    path: /add-supplementary-reading
+    defaults: { _controller: AdminBundle:SupplementaryReading:add}  
+
+supplementary_reading_edit:
+    path: /edit-supplementary-reading/{id}
+    defaults: { _controller: AdminBundle:SupplementaryReading:edit, id:null}      
+
+supplementary_reading_delete:
+    path: /delete-supplementary-reading/{id}
+    defaults: { _controller: AdminBundle:SupplementaryReading:delete, id:null}      

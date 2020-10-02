@@ -1,0 +1,174 @@
+<div class="col-xs-12 col-md-3">
+    {% for key, unidad in unidades %}
+        {% set newKey = key + 1 %}
+        <div class="panel panel-default blocks">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a aria-expanded="true" data-toggle="collapse" data-parent="#accordion" href="#bloque-{{key}}">Unidad {{ newKey }}</a>
+                </h4>
+            </div>
+            <div id="bloque-{{key}}" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <p><strong>{{ unidad.name }}</strong></p>
+                    <div>
+                        <ul class="nav nav-tabs">
+                            {% for key, topic in topics %}
+                                {% if unidad.id == topic.unidad.id %}
+                                    <li>
+                                        <a href="#tab-{{key}}" data-toggle="tab" aria-expanded="false">
+                                            <div class='m-xs-b-1'>
+                                                <p>{#<span></span>#}{{ topic.name }}{#Consectuar#}</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            {% for exam in exams %}
+                                {% if unidad.id == exam.unidad.id %}
+                                    <li>
+                                        <a href="#tab-examen-{{exam.id}}" data-toggle="tab">
+                                            <div class='m-xs-b-1'>
+                                                <p>{{ exam.name }}</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endif%}
+                            {% endfor%}
+                            {% for upexam in upload_exams %}
+                                {% if unidad.id == upexam.unidad.id %}
+                                    <li>
+                                        <a href="#tab-upload-examen-{{upexam.id}}" data-toggle="tab">
+                                            <div class='m-xs-b-1'>
+                                                <p>{{ upexam.name }}</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endif%}
+                            {% endfor%}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    {% endfor %}
+</div>
+<div class="col-xs-12 col-md-9">
+    <!-- Tab panes -->
+    <div class="tab-content border-line-blue padding-wrap">
+        {% for unidad in unidades %} 
+            {% for key, topic in topics %}
+                {% if unidad.id == topic.unidad.id %}
+                    <div class="tab-pane {% if loop.first %}active{% endif %}" id="tab-{{key}}">
+                        {#<div class="ico-file-wrap">
+                            <i class="fa fa-file-text-o"></i>
+                            <a>Documento</a>
+                        </div>
+                        <div class="ico-file-wrap">
+                            <i class="fa fa-file-video-o"></i>
+                            <a>Video</a>
+                        </div>#}
+                        <h1 class="text-blue">{{ topic.name }}</h1>
+                        {#<p class="text-blue m-xs-b-1">Introduccion</p>#}
+                        {{ topic.body|raw }}
+                        {# FILES#}
+                        {% include 'WebBundle:Courses:_files.html.twig' %}
+                        {# FILES#}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        {% for unidad in unidades %}
+            {% for exam in exams %}
+                {% if unidad.id == exam.unidad.id %}
+                    <div class="tab-pane tab-examen" id="tab-examen-{{exam.id}}">
+                        <h1 class="text-blue">{{ exam.name }}</h1>
+                        {% if app.user|finish(exam) == true %}
+                            <p>Haz acabado el examen satisfactoriamente.</p>
+                            {% if finish_exams %}
+                                {% for item in finish_exams %}
+                                    {% if exam.id == item.exam.id and app.user.id == item.user.id %}
+                                        <p> Tu calificación es: <strong>{{item.score}}</strong></p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% else %}
+                            <div class="respuesta-ajax">
+                                <img src="{{ asset('assets/images/loader.gif') }}" class='m-xs-r-1 hidden' width="31" heigth="31" /><p id="test"></p>
+                            </div>
+                            <form method='post'>
+                                <div class="exam-wrap">
+                                    <div class="question-wrap m-xs-b-3">
+                                        {% for key, question in questions %}
+                                            {% if question.exam.id == exam.id %}
+                                                <p>
+                                                    <strong>{{question.name}}</strong>
+                                                </p>
+                                                {% for key, answ in answers %}
+                                                    {% set newKeyAnw = key + 1%}
+                                                    {% if answ.questionadmin.id == question.id %}
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="optionsRadios-{{question.numberquestion}}" id="optionsRadios-{{newKeyAnw}}" value="{{answ.answer}}" required>
+                                                                {{answ.name}}
+                                                            </label>
+                                                        </div>
+                                                    {% endif%}
+                                                {% endfor%}
+                                            {% endif%}
+                                        {% endfor %}  
+                                    </div>
+                                </div>
+                                <input type="hidden" value="{{exam.id}}" name="exam-id" />
+                                <input type='submit' value='Calificar' class='btn btn-success btn-calificar pull-right' data-exam='{{ exam.id }}' data-course='{{course.id}}' />
+                                <div class='clearfix'></div>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        {# BLOQUE UPLOAD EXAM #}
+        {% for unidad in unidades %}
+            {% for upexams in upload_exams %}
+                {% if unidad.id == upexams.unidad.id %}
+                    <div class="tab-pane" id="tab-upload-examen-{{upexams.id}}">
+                        {% if app.user|upload(course,unidad) == true %}
+                            <p>Ya has enviado tu proyecto a calificar.</p>
+                            {% if finish_exams_upload %}
+                                {% for item in finish_exams_upload %}
+                                    {% if upexams.id == item.exam.id and app.user.id == item.user.id %}
+                                        <p> Tu calificación es: <strong>{{item.score}}</strong></p>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% else %}
+                            <h2>Selecciona un usuario que este inscrito en el curso y enviale tu archivo.</h2>
+                            <form method="post" enctype='multipart/form-data'>
+                                <div class="form-group">
+                                    <label class="control-label">Selecciona un usuario</label>
+                                    <select class='form-control' name="users" id="grados">
+                                        <option disabled selected="selected">-Escoge una opcion-</option>
+                                        {% for key, up in users_inscriptions %}
+                                            {% set newKey = key + 1 %}
+                                            <option value="{{up.user.id}}">{{ newKey }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class='form-group'>
+                                    <label class='control-label'>Sube un Archivo</label>
+                                    <input type="file" class="form-control" name="file" required/>
+                                </div> 
+                                <div class='form-group text-center {#file-disabled#}' id="btn-action-wrap">
+                                    <input type="hidden" value="{{unidad.id}}" name="unidad-id" />
+                                    <input type="submit" class="btn btn-blue-light" value="Guardar" />
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>

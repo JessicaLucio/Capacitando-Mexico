@@ -1,0 +1,13 @@
+{# FILES#}
+{% if files %}
+    <div class="text-center">
+        {% for file in files %}
+            {% if topic.id == file.topic.id %}
+                <img class=' {{ file.logotipo == 1 ? 'logotipo-img' : 'responsive-image' }} m-xs-tb-1'
+                     src="{{ asset("uploads/files/"~file.course.id~"/"~file.unidad.id~"/"~file.topic.id~"/"~file.file) }}"/>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="clearfix"></div>
+{% endif %}
+{# FILES#}

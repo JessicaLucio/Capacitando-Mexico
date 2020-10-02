@@ -1,0 +1,28 @@
+AdminBundle\Entity\UploadExam:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\UploadExamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            
+    manyToOne:
+        course:
+            targetEntity: Course
+            joinColumn:
+                    name: course_id
+                    referencedColumnName: id
+                    
+        unidad:
+            targetEntity: Unidad
+            joinColumn:
+                    name: unidad_id
+                    referencedColumnName: id          
+    lifecycleCallbacks: {  }

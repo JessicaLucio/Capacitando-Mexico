@@ -1,0 +1,23 @@
+AdminBundle\Entity\Exam:
+    type: entity
+    table: null
+    repositoryClass: AdminBundle\Repository\ExamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            
+    manyToOne:
+        unidad:
+            targetEntity: Unidad
+            joinColumn:
+                    name: unidad_id
+                    referencedColumnName: id         
+            
+    lifecycleCallbacks: {  }

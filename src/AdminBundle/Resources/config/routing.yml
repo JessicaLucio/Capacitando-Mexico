@@ -1,0 +1,63 @@
+admin_user:
+    resource: "@AdminBundle/Resources/config/routing/user.yml"
+    prefix: /
+    
+admin_topic:
+    resource: "@AdminBundle/Resources/config/routing/topic.yml"
+    prefix: /
+    
+admin_info_course:
+    resource: "@AdminBundle/Resources/config/routing/info-course.yml"
+    prefix: /    
+    
+admin_unidad:
+    resource: "@AdminBundle/Resources/config/routing/unidad.yml"
+    prefix: /   
+    
+admin_course:
+    resource: "@AdminBundle/Resources/config/routing/course.yml"
+    prefix: /
+    
+admin_supplementary_reading:
+    resource: "@AdminBundle/Resources/config/routing/supplementary-reading.yml"
+    prefix: /       
+    
+admin_mandatory_reading:
+    resource: "@AdminBundle/Resources/config/routing/mandatory-reading.yml"
+    prefix: /     
+        
+admin_exam:
+    resource: "@AdminBundle/Resources/config/routing/exam.yml"
+    prefix: /
+        
+admin_question:
+    resource: "@AdminBundle/Resources/config/routing/question.yml"
+    prefix: /
+    
+admin_answer:
+    resource: "@AdminBundle/Resources/config/routing/answer.yml"
+    prefix: /
+    
+admin_file:
+    resource: "@AdminBundle/Resources/config/routing/file.yml"
+    prefix: /    
+
+admin_password:
+    resource: "@AdminBundle/Resources/config/routing/password.yml"
+    prefix: /
+    
+admin_upload_exam:
+    resource: "@AdminBundle/Resources/config/routing/upload-exam.yml"
+    prefix: /    
+    
+admin_average_user:
+    resource: "@AdminBundle/Resources/config/routing/average-user.yml"
+    prefix: /
+
+admin_inscription:
+    resource: "@AdminBundle/Resources/config/routing/inscriptions.yml"
+    prefix: /
+    
+admin_login:
+    path:     /login
+    defaults: { _controller: AdminBundle:User:login }

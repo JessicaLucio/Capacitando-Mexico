@@ -1,0 +1,8 @@
+average_user_index:
+    path: /average-index
+    defaults: { _controller: AdminBundle:Average:index}  
+    
+exam_add:
+    path: /add-exam
+    defaults: { _controller: AdminBundle:Exam:add}  
+

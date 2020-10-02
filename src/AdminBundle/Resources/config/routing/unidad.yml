@@ -1,0 +1,15 @@
+unidad_index:
+    path: /index-unidad
+    defaults: { _controller: AdminBundle:Unidad:index}  
+    
+unidad_add:
+    path: /add-unidad
+    defaults: { _controller: AdminBundle:Unidad:add}  
+
+unidad_edit:
+    path: /edit-unidad/{id}
+    defaults: { _controller: AdminBundle:Unidad:edit, id:null}      
+
+unidad_delete:
+    path: /delete-unidad/{id}
+    defaults: { _controller: AdminBundle:Unidad:delete, id:null}      

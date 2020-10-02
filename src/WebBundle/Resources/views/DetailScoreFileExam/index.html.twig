@@ -1,0 +1,10 @@
+{% extends 'WebBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h1>tu calificacion es {{ examen.score }}</h1>
+            <a href="{{ path('web_mycourses') }}" class="btn btn-primary">regresar a tus cursos</a>
+        </div>
+    </div>
+{% endblock %}

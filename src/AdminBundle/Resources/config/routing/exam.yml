@@ -1,0 +1,15 @@
+exam_index:
+    path: /index-exam
+    defaults: { _controller: AdminBundle:Exam:index}  
+    
+exam_add:
+    path: /add-exam
+    defaults: { _controller: AdminBundle:Exam:add}  
+
+exam_edit:
+    path: /edit-exam/{id}
+    defaults: { _controller: AdminBundle:Exam:edit, id:null}      
+
+exam_delete:
+    path: /delete-exam/{id}
+    defaults: { _controller: AdminBundle:Exam:delete, id:null}      
