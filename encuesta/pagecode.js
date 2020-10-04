@@ -1,9 +1,17 @@
-// scripts here:
-
 function submitQuiz() {
     console.log('submitted');
+    var element = document.getElementById("content");
+    element.classList.add("hide");
 
-// get each answer score
+    var element = document.getElementById("thanks");
+    element.classList.add("show");
+
+    var element = document.getElementById("btn-link");
+    element.classList.add("show");
+    
+    window.scrollTo(0, 0);
+
+    // get each answer score
     function answerScore (qName) {
         var radiosNo = document.getElementsByName(qName);
 
@@ -190,3 +198,5 @@ function submitQuiz() {
     }
 
 }
+
+
