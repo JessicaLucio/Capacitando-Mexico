@@ -38,6 +38,7 @@ body {
 }
 
 .quizAnswers {
+    position: relative;
     color: #747c84;
     max-width: 1140px;
     width: 100%;
@@ -125,8 +126,16 @@ tbody .table-info .item {
     display: flex;
 }
 
+.d-flex {
+    display: flex;
+}
+
 .item {
     position: relative;
+}
+
+.item:first-of-type {
+    padding-right: 10px;
 }
 
 .item label {
