@@ -66,10 +66,8 @@ class __TwigTemplate_1d579720e61197574ff39fd4af10566069af6ad0965fe3471ccb19afe91
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("web_terminos");
             echo "\" class=\"text-orange\">Términos de Servicio</a></li>
                             </ul>
-                            <p class=\"footpar\">Evento realizado con el apoyo de la SECRETARIA a través del Programa Integral del Desarrollo Rural 2016.</p>
-                            <p class=\"text-gray\">Este programa es público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los establecidos en el programa.</p>
                             
-                            <p class=\"text-gray\">Centro de Investigación y Desarrollo Costero, Todos los Derechos Reservados</p>
+                            <p class=\"text-gray\">Centro de Investigación y Desarrollo Costero, Todos los Derechos Reservados.</p>
                         </div>
                     </div>
                 </div>

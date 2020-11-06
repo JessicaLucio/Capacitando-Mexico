@@ -17,13 +17,19 @@ body {
     margin-left: auto;
 }
 
-.container {
-    max-width: 1140px;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+header {
+    padding: 10px 0;
+    border-bottom: 1px solid #f1efef;
+}
+
+header a {
+    background-image: url(http://www.capacitandomexico.org/assets/images/default/logo.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 4.1rem;
+    height: 3.6rem;
+    display: inline-block;
 }
 
 .title {
@@ -205,6 +211,28 @@ label input:checked + span::before {
     display: block;
 }
 
+.thanks-info {
+    margin-bottom: 50px;
+    padding: 0 15px;
+}
+
+.thanks-info a {
+    color: #ffa300;
+}
+
+.thanks-info p {
+    margin: 5px 0;
+}
+
+.thanks-info .thanks-link {
+    text-decoration: none;
+    color: #b5babf;
+}
+
+.thanks-info .thanks-link:hover {
+    text-decoration: underline;
+}
+
 .footer {
     background-color: #34383c;
     padding: 70px 0;
@@ -220,16 +248,3 @@ label input:checked + span::before {
     color: #fff;
     text-decoration: underline;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
